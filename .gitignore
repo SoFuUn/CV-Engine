@@ -1,0 +1,39 @@
+# ==============================================================================
+# Automatisiertes CV-Projekt - GitIgnore
+# ==============================================================================
+
+# 1. Projekt-Spezifische Ignorierungen
+# ------------------------------------------------------------------------------
+# Ignoriert den kompletten Output-Ordner (deine generierten PDFs)
+output/
+
+# Ignoriert alle Log-Dateien, aber behält den Ordner (via .gitkeep, falls genutzt)
+logs/*.log
+
+# Ignoriert deine persönlichen Lebenslauf-Daten im data-Ordner
+data/cv_data.json
+
+
+# 2. Virtuelle Umgebungen (Python venv)
+# ------------------------------------------------------------------------------
+# Ignoriert die lokale Entwicklungsumgebung, die durch die start.bat erstellt wird
+venv/
+.venv/
+env/
+
+
+# 3. Python-Systemdateien (Byte-Code & Caches)
+# ------------------------------------------------------------------------------
+# Diese Dateien entstehen automatisch beim Ausführen von Python-Skripten
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+
+# 4. Betriebssystem-Spezifische Dateien
+# ------------------------------------------------------------------------------
+# Verhindert das Hochladen von versteckten OS-Metadaten
+.DS_Store
+Thumbs.db

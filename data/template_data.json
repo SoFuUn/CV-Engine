@@ -1,0 +1,69 @@
+{
+    "contact": {
+        "name": "Max Mustermann",
+        "jobtitle": "Python Developer (Demo)",
+        "certificate": "PCEP, PCAP, PCPP1",
+        "address": ["Musterstraße 1", "12345 Musterstadt"],
+        "email": ["max@beispiel.de"],
+        "phone": ["+49 123 456789"]
+    },
+    "profile_summary": "Automatischer Beispiel-Lebenslauf.",
+    "sections": {
+        "Persönliche Daten": [
+            "Geburtsdatum: [TT.MM.JJJJ]",
+            "Familienstand: ledig"
+        ],
+        "Qualifikation & Bildung": [
+            {
+                "period": "2024 - 2025",
+                "title": "Zertifikatskurs / Weiterbildung",
+                "company": "[Bildungsträger / Akademie]"
+            },
+            {
+                "period": "2024 - 2025",
+                "title": "Fachbezogene Qualifikation",
+                "company": "[Bildungsträger / Akademie]"
+            }
+        ],
+        "Berufliche Laufbahn": [
+            {
+                "period": "2022 - 2023",
+                "title": "Kundensupport im Transportwesen",
+                "company": "[Personaldienstleistungsunternehmen]"
+            },
+            {
+                "period": "2020 - 2022",
+                "title": "Kundensupport / Player Support Agent",
+                "company": "[Unternehmen im Gaming-Sektor]"
+            }
+        ],
+        "Praktika": [
+            {
+                "period": "2016 - 2017",
+                "title": "Einjähriges Praktikum im IT- und Digitalisierungsbereich",
+                "company": "[Kommunalbehörde / Öffentlicher Dienst]"
+            },
+            {
+                "period": "2015 - 2015",
+                "title": "Praktikum im Bereich Systemintegration / Technik",
+                "company": "[IT-Dienstleistungsbetrieb]"
+            }
+        ]
+    },
+    "technical_profile": {
+        "programming_languages": [
+            {"name": "Python", "level": 5},
+            {"name": "SQL", "level": 4},
+            {"name": "JavaScript", "level": 3}
+        ],
+        "tools_frameworks": [
+            "Git & GitHub", "Docker", "Django", "Flask", "PostgreSQL", "Linux"
+        ],
+        "focus_areas": [
+            "Object-Oriented Programming (OOP)",
+            "Clean Code & PEP 8",
+            "Test-Driven Development (TDD)",
+            "REST API Development"
+        ]
+    }
+}

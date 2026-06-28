@@ -41,7 +41,7 @@ The project is implemented using advanced object-oriented Python design principl
 
 ## 1. Requirements
 
-Make sure Python **3.11.9** is installed.
+Make sure Python **3.8** is installed.
 
 ## 2. Install Dependencies
 

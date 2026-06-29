@@ -173,13 +173,12 @@ class CV(FPDF):
         next_y = self.add_sidebar_contact_element(ICON_MAIL_PATH, email, next_y)
         next_y = self.add_sidebar_contact_element(ICON_PHONE_PATH, phone, next_y)
 
-        if languages:
-            self.set_xy(self.sidebar_x, next_y + 15)
-            self.set_font("Arial", "B", 12)
-            self.cell(self.sidebar_w, 10, "Sprachen:", align="C", ln=True)
-            
-            for lang in languages:
-                self.draw_skill_level(lang["name"], lang["level"], self.get_y() + 5)
+        self.set_xy(self.sidebar_x, next_y + 15)
+        self.set_font("Arial", "B", 12)
+        self.cell(self.sidebar_w, 10, "Languages:", align="C", ln=True)
+        
+        self.draw_skill_level("German - Native language", 5, self.get_y() + 5)
+        self.draw_skill_level("English", 5, self.get_y() + 5)
     
     def add_sidebar_contact_element(self, icon_path: Path, text_lines: List[str], y_pos: float) -> float:
         sidebar_center = self.sidebar_x + (self.sidebar_w / 2)
@@ -292,7 +291,7 @@ class CV(FPDF):
             self.set_xy(sidebar_rechts_x, current_y)
             self.set_font("Arial", "B", 12)
             self.set_text_color(255, 255, 255)
-            self.cell(sidebar_w, 8, "Programmiersprachen:", align="C", ln=True)
+            self.cell(sidebar_w, 8, "Programming languages:", align="C", ln=True)
             current_y = self.get_y() + 2
             
             for lang in languages:

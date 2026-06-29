@@ -265,15 +265,18 @@ class CV(FPDF):
 
     def add_experience(self, period: str, title: str, company: str) -> None:
         self.set_font("Arial", "B", 11)
-        self.cell(35, 8, period, ln=False)
-        
+        start_y = self.get_y()
+        self.cell(35, 6, period, ln=False)
+
         available_width = self.sidebar_x - 34
-        self.set_x(33) 
+        self.set_xy(33, start_y) 
         self.multi_cell(available_width, 6, title, align="L")
         
         self.set_x(33)
         self.set_font("Arial", "I", 10)
         self.multi_cell(available_width, 6, company, align='L')
+        
+        self.ln(2)
 
     def add_technical_skills(self, languages: List[Dict[str, int]], tools: List[str], focus: List[str]) -> None:
         """Rendert die erweiterten technischen Fähigkeiten in der rechten Sidebar,

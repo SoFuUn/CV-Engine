@@ -1,74 +1,87 @@
 # Automated Python CV Creator 📄🚀
 
-Ein automatisiertes Python-Tool zur dynamischen Generierung von modernen, professionellen Lebensläufen im PDF-Format. Die Steuerung erfolgt vollständig datengetrieben über eine zentrale JSON-Datei. Das Layout passt sich dynamisch an: Auf Seite 1 wird eine Sidebar links generiert, auf Seite 2 wechselt das System automatisch zu einer gespiegelten Sidebar auf der rechten Seite, um Platz für ein erweitertes technisches Profil zu schaffen.
+An automated Python tool for dynamically generating modern, professional CVs in PDF format. The entire application is data-driven and controlled through a central JSON file. The layout adapts automatically: page one features a left-hand sidebar, while page two seamlessly switches to a mirrored right-hand sidebar to provide additional space for an extended technical profile.
 
-Das Projekt ist nach fortgeschrittenen Python-Design-Standards objektorientiert implementiert.
+The project is implemented using advanced object-oriented Python design principles, following clean architecture and maintainable coding standards.
 
 ## Features ✨
 
-* **100% Datengetrieben:** Keine Code-Änderungen für inhaltliche oder strukturelle Updates nötig – reine Steuerung über JSON.
-* **Intelligentes Multi-Page-Layout:** Erkennt automatisch den Übergang zu Seite 2, spiegelt die Sidebar nach rechts und platziert dort erweiterte Qualifikationen.
-* **Modernes Text-Rendering:** Verhindert unschöne Lücken im Layout durch sauberen, linksbündigen Satz bei Spalten-Texten.
-* **Custom Assets:** Einfacher Austausch von Profilbild und Kontaktsymbolen über den `assets`-Ordner mit flexibler Erkennung von `.png`, `.jpg` und `.jpeg`.
-* **Kaskadierendes Fallback-System:** Dreistufige Absicherung (Hauptdatei -> Template-Datei -> Hardcoded Speicher-Fallback), die einen Programmabsturz selbst bei gelöschten Datenordnern verhindert.
-* **Logging:** Integriertes Datei- und Konsolen-Logging zur lückenlosen Fehlernachverfolgung mit Zeitstempeln und Zeilennummern.
+* **100% Data-Driven:** No code modifications are required for content or structural updates. Everything is managed through a single JSON configuration file.
+* **Intelligent Multi-Page Layout:** Automatically detects the transition to page two, mirrors the sidebar to the right, and displays an extended technical profile.
+* **Modern Text Rendering:** Produces clean, left-aligned text layouts that eliminate large spacing gaps commonly found in justified column text.
+* **Custom Assets:** Easily replace the profile picture and contact icons through the `assets` folder. Supports automatic detection of `.png`, `.jpg`, and `.jpeg` files.
+* **Cascading Fallback System:** A three-stage fallback mechanism (primary data → template file → built-in memory dictionary) prevents application crashes even if the data directory is missing.
+* **Integrated Logging:** Comprehensive file and console logging with timestamps and line numbers for efficient debugging and error tracking.
 
 ---
 
-## Projektstruktur 📂
+# Project Structure 📂
 
-├── assets/                  # Visuelle Ressourcen (Bilder & Icons)
-│   ├── mail.png             # Icon für E-Mail (Unterstützt png, jpg, jpeg)
-│   ├── phone.png            # Icon für Telefonnummer
-│   ├── pin.png              # Icon für Adresse / Standort
-│   └── portrait.jpg         # Profilbild (wird automatisch via glob erkannt)
-├── data/                    # Daten-Input & Vorlagen
-│   ├── cv_data.json         # Die zentrale Inhalts-Datei (Hauptdatei)
-│   └── template_data.json   # Lokales Sicherheits-Template (Fallback)
-├── logs/                    # Automatisch generierte Log-Dateien
-│   └── cv_generator.log     # Fehler- und Systemprotokolle
-├── output/                  # Ausgabe-Verzeichnis
-│   └── Lebenslauf.pdf       # Das fertig generierte, mehrseitige PDF
-├── main.py                  # Hauptskript (Ausführung, Datenvalidierung & Orchestrierung)
-├── lebenslauf.py            # PDF-Klassenarchitektur (Erweiterung von FPDF2 mit Event-Handling)
-└── README.md                # Projektdokumentation
+```text
+├── assets/                  # Visual assets (images & icons)
+│   ├── mail.png             # Email icon (supports PNG, JPG, JPEG)
+│   ├── phone.png            # Phone icon
+│   ├── pin.png              # Address / location icon
+│   └── portrait.jpg         # Profile picture (automatically detected via glob)
+├── data/                    # Data input & templates
+│   ├── cv_data.json         # Main content file
+│   └── template_data.json   # Local backup template (fallback)
+├── logs/                    # Automatically generated log files
+│   └── cv_generator.log     # Error and system logs
+├── output/                  # Output directory
+│   └── Resume.pdf           # Generated multi-page PDF
+├── main.py                  # Main application (execution, validation & orchestration)
+├── lebenslauf.py            # PDF class architecture (FPDF2 extension with event handling)
+└── README.md                # Project documentation
+```
 
 ---
 
-## Installation & Vorbereitung ⚙️
+# Installation ⚙️
 
-### 1. Voraussetzungen
-Stelle sicher, dass Python 3.8+ installiert ist.
+## 1. Requirements
 
-### 2. Abhängigkeiten installieren
-Das Projekt basiert auf der modernen fpdf2-Bibliothek. Installiere die benötigten Pakete über dein Terminal:
+Make sure Python **3.8** is installed.
 
+## 2. Install Dependencies
+
+The project is built on the modern **fpdf2** library.
+
+Install the required package:
+
+```bash
 pip install fpdf2
+```
 
 ---
 
-## Konfiguration & Anpassung 🛠️
+# Configuration & Customization 🛠️
 
-### 1. Inhalt & Skills anpassen (`data/cv_data.json`)
-Die Inhalte deines Lebenslaufs werden in der `cv_data.json` gepflegt. Für die erweiterte zweite Seite wurde das logische Keyword `technical_profile` implementiert.
+## 1. Edit Resume Content (`data/cv_data.json`)
 
-Struktur-Beispiel:
+All resume content is maintained inside `cv_data.json`.
+
+The logical section `technical_profile` is used to populate the extended sidebar on the second page.
+
+Example structure:
+
+```json
 {
     "contact": {
-        "name": "Max Mustermann",
+        "name": "John Doe",
         "jobtitle": "Python Developer",
         "certificate": "PCEP, PCAP, PCPP1",
-        "address": ["Musterstraße 1"],
-        "email": ["max@beispiel.de"],
-        "phone": ["+49 123 456789"]
+        "address": ["123 Example Street"],
+        "email": ["john@example.com"],
+        "phone": ["+1 555 123456"]
     },
-    "profile_summary": "Ambitionierter Python-Entwickler mit Fokus auf saubere Software-Architektur...",
+    "profile_summary": "Passionate Python developer focused on clean software architecture...",
     "sections": {
-        "Praktika": [
+        "Internships": [
             {
-                "period": "2024 - Heute",
+                "period": "2024 - Present",
                 "title": "Senior Python Engineer",
-                "company": "Tech Solutions GmbH"
+                "company": "Tech Solutions Ltd."
             }
         ]
     },
@@ -79,7 +92,10 @@ Struktur-Beispiel:
             {"name": "JavaScript", "level": 3}
         ],
         "tools_frameworks": [
-            "Git & GitHub", "Docker", "Django", "Flask"
+            "Git & GitHub",
+            "Docker",
+            "Django",
+            "Flask"
         ],
         "focus_areas": [
             "Object-Oriented Programming (OOP)",
@@ -88,28 +104,62 @@ Struktur-Beispiel:
         ]
     }
 }
+```
 
-### 2. Design & Medien austauschen (`assets/`)
-* **Profilbild:** Ersetze die Datei im `assets/`-Ordner. Das Skript erkennt das Bild dynamisch, solange der Dateiname mit `portrait.` beginnt.
-* **Icons:** Die Symbole für Adresse, Mail und Telefon können durch beliebige PNG- oder JPG-Dateien mit den Namen `pin`, `mail` und `phone` ersetzt werden (Groß-/Kleinschreibung wird ignoriert).
-* **Ausfallsicherheit:** Sollten Assets fehlen, fängt das Programm dies ab und generiert minimalistische, geometrische Platzhalter im PDF.
+## 2. Replace Design Assets (`assets/`)
+
+### Profile Picture
+
+Replace the existing image inside the `assets` folder.
+
+The script automatically detects any image whose filename begins with:
+
+```
+portrait.
+```
+
+Supported formats:
+
+* PNG
+* JPG
+* JPEG
+
+### Contact Icons
+
+Replace the address, email, and phone icons with your own PNG or JPG files named:
+
+* `pin`
+* `mail`
+* `phone`
+
+Filename capitalization is ignored.
+
+### Fault Tolerance
+
+If any assets are missing, the application automatically generates simple geometric placeholders, ensuring that PDF generation never fails.
 
 ---
 
-## Anwendung 🚀
+# Usage 🚀
 
-Führe das Hauptprogramm aus, um den Lebenslauf zu generieren:
+Run the main application:
 
+```bash
 python main.py
+```
 
-Nach erfolgreicher Ausführung findest du dein fertiges Dokument unter:
-`output/Lebenslauf.pdf`
+After successful execution, your generated resume can be found at:
+
+```text
+output/Resume.pdf
+```
 
 ---
 
-## Robustes Error-Handling & Logging 📋
+# Robust Error Handling & Logging 📋
 
-Das Projekt ist für den produktiven Einsatz vorkonfiguriert:
-* **JSON-Schutz:** Ungültige JSON-Formate in der Hauptdatei werden abgefangen und führen zu einem kontrollierten Programmende mit Fehlermeldung statt zu einem unschönen Python-Crash.
-* **Hierarchischer Daten-Fallback:** Wenn die Hauptdatei fehlt, wird die `template_data.json` geladen. Fehlt auch diese, generiert das System die Daten direkt aus einem Hardcoded-Dictionary im Arbeitsspeicher.
-* **Log-Protokoll:** Unter `logs/cv_generator.log` werden Systemwarnungen (z. B. fehlende Bilder) mit präzisen Zeitstempeln und Dateizeilen für das Debugging festgehalten.
+The application is designed for reliable production use.
+
+* **JSON Validation:** Invalid JSON inside the primary data file is detected and results in a controlled error message instead of a Python crash.
+* **Hierarchical Data Fallback:** If `cv_data.json` is unavailable, the application loads `template_data.json`. If that file is also missing, it automatically generates data from a built-in Python dictionary.
+* **Logging:** All warnings and runtime events (such as missing images) are written to `logs/cv_generator.log` with precise timestamps and source line numbers, making debugging straightforward.
